@@ -32,7 +32,7 @@ while(numeroIntentos > 0){
         }else if(parseInt(numeroIntroducido) < numeroAdivinar){
             console.log('Es mas grande!');
         }else{
-            console.log('Acertaste!');
+            console.log('Acertaste en:', `${numeroIntentos} intentos!`);
             break;
         }
     }
