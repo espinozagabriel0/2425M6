@@ -119,9 +119,10 @@ btnSiguientePregutna.addEventListener('click', function cargarSiguientePregunta(
             // console.log('Respuesta escogida: ', opcionEscogida[i].innerHTML)
 
             if (opcionEscogida[i].innerHTML == preguntaCargada.respuesta[numRespuestaCorrecta]) {
-            console.log(`La respuesta ${opcionEscogida[i].innerHTML} es correcta!`)  
-            
+                console.log(`La respuesta ${opcionEscogida[i].innerHTML} es correcta!`)  
+                opcionEscogida[i].classList.add('bg-success')
             }else{
+                opcionEscogida[i].classList.add('bg-warning')
                 console.log(`La respuesta ${opcionEscogida[i].innerHTML} no es correcta!`)
             }
         })
