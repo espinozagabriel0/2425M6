@@ -40,3 +40,47 @@ const arrayPersonas = [
     }
 ]
 console.log(arrayPersonas[2].apellidos)
+
+
+//Array alumnos
+const alumnes = [
+    {
+      nom: "Joan Pérez",
+      edat: 18,
+      correu: "joan.perez@example.com",
+      moduls: [
+        { nom: "Desenvolupament Web", nota: 8.5 },
+        { nom: "Bases de Dades", nota: 7.0 },
+        { nom: "Sistemes Operatius", nota: 6.5 }
+      ]
+    },
+    {
+      nom: "Maria Sánchez",
+      edat: 19,
+      correu: "maria.sanchez@example.com",
+      moduls: [
+        { nom: "Desenvolupament Web", nota: 9.0 },
+        { nom: "Bases de Dades", nota: 8.0 },
+        { nom: "Sistemes Operatius", nota: 7.5 }
+      ]
+    },
+    {
+      nom: "Pere Martínez",
+      edat: 20,
+      correu: "pere.martinez@example.com",
+      moduls: [
+        { nom: "Desenvolupament Web", nota: 7.5 },
+        { nom: "Bases de Dades", nota: 6.0 },
+        { nom: "Sistemes Operatius", nota: 8.0 }
+      ]
+    }
+];
+
+
+console.log(alumnes[1].moduls[2].nota)
+console.log(alumnes[2].moduls[1].nota)
+
+//Recorrer un array
+for (let i = 0; i < arrayPersonas.length; i++) {
+    console.log('nombre de ', i, arrayPersonas[i].nombre)
+}
