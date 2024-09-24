@@ -82,5 +82,36 @@ console.log(alumnes[2].moduls[1].nota)
 
 //Recorrer un array
 for (let i = 0; i < arrayPersonas.length; i++) {
-    console.log('nombre de ', i, arrayPersonas[i].nombre)
+  console.log('nombre de ', i, arrayPersonas[i].nombre)
 }
+
+
+
+
+
+//Generando html a partir de un array
+//Creamos lista desordenada con nombre de alumnos
+let listaHTML = '<ul>'
+
+for (let i = 0; i < arrayPersonas.length; i++) {
+  listaHTML += `<li>${arrayPersonas[i].nombre}</li>`
+}
+listaHTML += '</ul>'
+
+document.querySelector('#miLista').innerHTML = listaHTML
+
+
+
+
+//Generar html en una tabla
+let tabla = ''
+
+for (let i = 0; i < arrayPersonas.length; i++) {
+  tabla += 
+    `<tr>
+      <td>${arrayPersonas[i].nombre}</td>
+      <td>${arrayPersonas[i].apellidos}</td>
+    </tr>
+    `
+}
+document.querySelector('tbody').innerHTML = tabla
