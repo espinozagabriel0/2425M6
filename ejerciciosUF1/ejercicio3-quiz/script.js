@@ -1,7 +1,7 @@
 console.log("Quiz cargado correctamente.")
 
 const tituloPregunta = document.querySelector('h2#question')
-const btnSiguientePregutna = document.querySelector('button#next-question')
+const btnSiguientePregunta = document.querySelector('button#next-question')
 const preguntas = [
     {
       pregunta: "¿Cuál es el planeta más cercano al Sol?",
@@ -81,16 +81,19 @@ const preguntas = [
 ]
 console.log(preguntas)
 
+// TODO: FUNCION CARGUE UNA PREGUNTA ALEATORIA DEL ARRAY Y LA MUESTRE EN EL NAVEGADOR
 
 
-//Boton cargar siguiente pregunta
-btnSiguientePregutna.addEventListener('click', function cargarSiguientePregunta() {
+let preguntaCargada;
+cargarPreguntaAleatoria()
+
+function cargarPreguntaAleatoria() {
     //Cargar pregunta aleatoria del arreglo
     const randomNumber = Math.floor(Math.random()*preguntas.length)
     console.log('Numero random generado:', randomNumber)
 
     //Objeto de la pregunta cargada
-    let preguntaCargada = preguntas[randomNumber]
+    preguntaCargada = preguntas[randomNumber]
 
     // Titulo cargado
     let tituloCargado = preguntaCargada.pregunta
@@ -105,26 +108,32 @@ btnSiguientePregutna.addEventListener('click', function cargarSiguientePregunta(
         `
     }
     document.querySelector('#answers').innerHTML = botonesRespuestas
+    respuestaEscogida()
+}
 
+//TODO: FUNCION QUE MUESTRE SI EL USUARIO HA ESCOGIDO LA RESPUESTA CORRECTA O NO
+function respuestaEscogida() {
+  //Seleccionar respuesta
+  //Determinar que opcion ha escogido el usuario
+  let opcionEscogida = document.querySelectorAll('button.btn-primary') 
+  let numRespuestaCorrecta = preguntaCargada.correcta
+  console.log('La respuesta correcta es: ', numRespuestaCorrecta)
 
-    //Seleccionar respuesta
+  for (let i = 0; i < opcionEscogida.length; i++) {
+      opcionEscogida[i].addEventListener('click', function() {
 
-    //Determinar que opcion ha escogido el usuario
-    let opcionEscogida = document.querySelectorAll('button.btn-primary') 
-    let numRespuestaCorrecta = preguntaCargada.correcta
-    console.log('La respuesta correcta es: ', numRespuestaCorrecta)
+          if (opcionEscogida[i].innerHTML == preguntaCargada.respuesta[numRespuestaCorrecta]) {
+              console.log(`La respuesta ${opcionEscogida[i].innerHTML} es correcta!`)  
+              opcionEscogida[i].classList.add('bg-success')
+          }else{
+              opcionEscogida[i].classList.add('bg-danger')
+              console.log(`La respuesta ${opcionEscogida[i].innerHTML} no es correcta!`)
+          }
+      })
+  }
+}
 
-    for (let i = 0; i < opcionEscogida.length; i++) {
-        opcionEscogida[i].addEventListener('click', function() {
-            // console.log('Respuesta escogida: ', opcionEscogida[i].innerHTML)
-
-            if (opcionEscogida[i].innerHTML == preguntaCargada.respuesta[numRespuestaCorrecta]) {
-                console.log(`La respuesta ${opcionEscogida[i].innerHTML} es correcta!`)  
-                opcionEscogida[i].classList.add('bg-success')
-            }else{
-                opcionEscogida[i].classList.add('bg-warning')
-                console.log(`La respuesta ${opcionEscogida[i].innerHTML} no es correcta!`)
-            }
-        })
-    }
+//Boton cargar siguiente pregunta
+btnSiguientePregunta.addEventListener('click', function () {
+  cargarPreguntaAleatoria()
 })
