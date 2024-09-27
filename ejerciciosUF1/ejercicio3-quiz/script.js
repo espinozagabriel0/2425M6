@@ -2,6 +2,8 @@ console.log("Quiz cargado correctamente.")
 
 const tituloPregunta = document.querySelector('h2#question')
 const btnSiguientePregunta = document.querySelector('button#next-question')
+const resultadoError = document.querySelector('#result')
+
 const preguntas = [
     {
       pregunta: "¿Cuál es el planeta más cercano al Sol?",
@@ -81,14 +83,12 @@ const preguntas = [
 ]
 console.log(preguntas)
 
-// TODO: FUNCION CARGUE UNA PREGUNTA ALEATORIA DEL ARRAY Y LA MUESTRE EN EL NAVEGADOR
-
-
 let preguntaCargada;
 cargarPreguntaAleatoria()
 
 function cargarPreguntaAleatoria() {
     //Cargar pregunta aleatoria del arreglo
+    resultadoError.style.display = "none"
     const randomNumber = Math.floor(Math.random()*preguntas.length)
     console.log('Numero random generado:', randomNumber)
 
@@ -113,8 +113,6 @@ function cargarPreguntaAleatoria() {
 
 //TODO: FUNCION QUE MUESTRE SI EL USUARIO HA ESCOGIDO LA RESPUESTA CORRECTA O NO
 function respuestaEscogida() {
-  //Seleccionar respuesta
-  //Determinar que opcion ha escogido el usuario
   let opcionEscogida = document.querySelectorAll('button.btn-primary') 
   let numRespuestaCorrecta = preguntaCargada.correcta
   console.log('La respuesta correcta es: ', numRespuestaCorrecta)
@@ -125,8 +123,10 @@ function respuestaEscogida() {
           if (opcionEscogida[i].innerHTML == preguntaCargada.respuesta[numRespuestaCorrecta]) {
               console.log(`La respuesta ${opcionEscogida[i].innerHTML} es correcta!`)  
               opcionEscogida[i].classList.add('bg-success')
+              resultadoError.style.display = "none"
           }else{
-              opcionEscogida[i].classList.add('bg-danger')
+              resultadoError.innerHTML = `Incorrecto, la respuesta correcta es: ${preguntaCargada.respuesta[numRespuestaCorrecta]}` 
+              resultadoError.style.display = "block"
               console.log(`La respuesta ${opcionEscogida[i].innerHTML} no es correcta!`)
           }
       })
