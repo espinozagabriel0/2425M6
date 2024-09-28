@@ -11,157 +11,158 @@ let errors = 0
 
 
 const preguntas = [
-    {
-      pregunta: "¿Cuál es el planeta más cercano al Sol?",
-      respuesta: ["Tierra", "Marte", "Venus", "Mercurio"],
-      correcta: 3
-    },
-    {
-      pregunta: "¿Qué órgano del cuerpo humano es responsable de bombear sangre?",
-      respuesta: ["Pulmones", "Hígado", "Corazón", "Riñones"],
-      correcta: 2
-    },
-    {
-      pregunta: "¿Cuál es la capital de Francia?",
-      respuesta: ["Roma", "Berlín", "Madrid", "París"],
-      correcta: 3
-    },
-    {
-      pregunta: "¿Quién escribió 'Cien años de soledad'?",
-      respuesta: ["Jorge Luis Borges", "Gabriel García Márquez", "Mario Vargas Llosa", "Pablo Neruda"],
-      correcta: 1
-    },
-    {
-      pregunta: "¿Cuál es el metal más liviano?",
-      respuesta: ["Plata", "Aluminio", "Hierro", "Litio"],
-      correcta: 3
-    },
-    {
-      pregunta: "¿Qué país tiene el Monte Everest en su territorio?",
-      respuesta: ["China", "India", "Nepal", "Bután"],
-      correcta: 2
-    },
-    {
-      pregunta: "¿Cuál es el océano más grande del mundo?",
-      respuesta: ["Atlántico", "Pacífico", "Índico", "Ártico"],
-      correcta: 1
-    },
-    {
-      pregunta: "¿Qué gas es esencial para la respiración humana?",
-      respuesta: ["Nitrógeno", "Dióxido de carbono", "Oxígeno", "Helio"],
-      correcta: 2
-    },
-    {
-      pregunta: "¿Cuál es el país más grande del mundo?",
-      respuesta: ["Estados Unidos", "China", "Rusia", "Canadá"],
-      correcta: 2
-    },
-    {
-      pregunta: "¿En qué año ocurrió la Revolución Francesa?",
-      respuesta: ["1789", "1776", "1815", "1492"],
-      correcta: 0
-    },
-    {
-      pregunta: "¿Cuál es el animal terrestre más rápido?",
-      respuesta: ["León", "Tigre", "Guepardo", "Elefante"],
-      correcta: 2
-    },
-    {
-      pregunta: "¿Quién pintó la Mona Lisa?",
-      respuesta: ["Vincent van Gogh", "Leonardo da Vinci", "Pablo Picasso", "Claude Monet"],
-      correcta: 1
-    },
-    {
-      pregunta: "¿Cuál es la fórmula química del agua?",
-      respuesta: ["H2O", "CO2", "O2", "NaCl"],
-      correcta: 0
-    },
-    {
-      pregunta: "¿Qué continente tiene la mayor cantidad de países?",
-      respuesta: ["Asia", "África", "Europa", "América del Sur"],
-      correcta: 1
-    },
-    {
-      pregunta: "¿Cuántos lados tiene un hexágono?",
-      respuesta: ["Cinco", "Seis", "Siete", "Ocho"],
-      correcta: 1
-    },
-    {
-    pregunta: "¿Cuál es el deporte que se juega con una pelota redonda y dos equipos de 11 jugadores?",
-    respuesta: ["Baloncesto", "Fútbol", "Béisbol", "Rugby"],
+  {
+    pregunta: "¿Qué equipo ha ganado más títulos de la Premier League desde su creación en 1992?",
+    respuesta: ["Chelsea", "Manchester City", "Manchester United", "Liverpool"],
+    correcta: 2
+  },
+  {
+    pregunta: "¿Quién es el máximo goleador en la historia de la Premier League?",
+    respuesta: ["Thierry Henry", "Sergio Agüero", "Wayne Rooney", "Alan Shearer"],
+    correcta: 3
+  },
+  {
+    pregunta: "¿En qué equipo jugaba Cristiano Ronaldo antes de unirse al Real Madrid en 2009?",
+    respuesta: ["Manchester United", "Juventus", "Sporting de Lisboa", "PSG"],
+    correcta: 0
+  },
+  {
+    pregunta: "¿Quién ganó el Balón de Oro en 2007, rompiendo la racha de Messi y Cristiano Ronaldo?",
+    respuesta: ["Zinedine Zidane", "Ronaldinho", "Kaká", "Andriy Shevchenko"],
+    correcta: 2
+  },
+  {
+    pregunta: "¿Qué equipo italiano ha ganado más títulos de la Serie A?",
+    respuesta: ["AC Milan", "Inter de Milán", "Juventus", "Roma"],
+    correcta: 2
+  },
+  {
+    pregunta: "¿Qué equipo inglés ganó la Champions League por primera vez en 2012?",
+    respuesta: ["Manchester United", "Arsenal", "Liverpool", "Chelsea"],
+    correcta: 3
+  },
+  {
+    pregunta: "¿Quién es el máximo goleador histórico de la Serie A?",
+    respuesta: ["Francesco Totti", "Silvio Piola", "Gunnar Nordahl", "Alessandro Del Piero"],
     correcta: 1
-    },
-    {
-    pregunta: "¿Cuál es el deporte olímpico en el que se utilizan raquetas y una red?",
-    respuesta: ["Tenis", "Bádminton", "Ping-pong", "Squash"],
-    correcta: 0
-    },
-    {
-    pregunta: "¿Cuál es el deporte en el que se utilizan patines y un disco de goma?",
-    respuesta: ["Hockey sobre hielo", "Patinaje artístico", "Curling", "Patinaje de velocidad"],
-    correcta: 0
-    },
-    {
-    pregunta: "¿Cuál es el deporte en el que se utilizan caballos?",
-    respuesta: ["Polo", "Salto de obstáculos", "Carreras de caballos", "Doma clásica"],
+  },
+  {
+    pregunta: "¿Qué club ha ganado más títulos de La Liga?",
+    respuesta: ["FC Barcelona", "Atlético de Madrid", "Real Madrid", "Valencia"],
     correcta: 2
-    },
-    {
-    pregunta: "¿Cuál es el deporte en el que se utilizan raquetas y una pelota de fieltro?",
-    respuesta: ["Tenis de mesa", "Bádminton", "Squash", "Pádel"],
+  },
+  {
+    pregunta: "¿En qué año ganó Inglaterra su única Copa del Mundo?",
+    respuesta: ["1966", "1970", "1986", "1990"],
     correcta: 0
-    },
-    {
-    pregunta: "¿Cuál es el deporte en el que se utilizan esquíes y se desciende por una pista de nieve?",
-    respuesta: ["Esquí alpino", "Snowboard", "Esquí de fondo", "Patinaje artístico"],
-    correcta: 0
-    },
-    {
-    pregunta: "¿Cuál es el deporte en el que se utilizan aros, pelotas y cintas?",
-    respuesta: ["Gimnasia rítmica", "Gimnasia artística", "Natación sincronizada", "Patinaje artístico"],
-    correcta: 0
-    },
-    {
-    pregunta: "¿Cuál es el deporte en el que se utilizan bates y una pelota dura?",
-    respuesta: ["Béisbol", "Sóftbol", "Críquet", "Tee ball"],
-    correcta: 0
-    },
-    {
-    pregunta: "¿Cuál es el deporte en el que se utilizan remos y se compite en embarcaciones?",
-    respuesta: ["Remo", "Canotaje", "Piragüismo", "Vela"],
-    correcta: 0
-    },
-    {
-    pregunta: "¿Cuál es el deporte en el que se utilizan pelotas de cuero y se juega con las manos?",
-    respuesta: ["Fútbol americano", "Rugby", "Fútbol gaélico", "Balonmano"],
+  },
+  {
+    pregunta: "¿Qué jugador ha ganado el mayor número de títulos de la Champions League?",
+    respuesta: ["Cristiano Ronaldo", "Paolo Maldini", "Lionel Messi", "Francisco Gento"],
+    correcta: 3
+  },
+  {
+    pregunta: "¿Qué equipo fue conocido como los 'Invincibles' en la Premier League por no perder ningún partido en la temporada 2003-04?",
+    respuesta: ["Manchester United", "Arsenal", "Liverpool", "Chelsea"],
+    correcta: 1
+  },
+  {
+    pregunta: "¿Qué equipo ganó la primera edición de la UEFA Champions League en 1992-93?",
+    respuesta: ["AC Milan", "Barcelona", "Olympique de Marsella", "Ajax"],
     correcta: 2
-    },
-    {
-    pregunta: "¿Cuál es el deporte en el que se utilizan raquetas y una pelota de goma?",
-    respuesta: ["Tenis", "Bádminton", "Squash", "Pádel"],
+  },
+  {
+    pregunta: "¿Quién es el jugador con más partidos jugados en la historia de La Liga?",
+    respuesta: ["Xavi Hernández", "Iker Casillas", "Andoni Zubizarreta", "Raúl González"],
+    correcta: 2
+  },
+  {
+    pregunta: "¿En qué equipo jugaba Diego Maradona cuando ganó la Serie A en 1987?",
+    respuesta: ["AC Milan", "Napoli", "Juventus", "Inter de Milán"],
+    correcta: 1
+  },
+  {
+    pregunta: "¿Qué equipo ganó la Premier League en 2016, sorprendiendo al mundo del fútbol?",
+    respuesta: ["Leicester City", "Tottenham Hotspur", "Manchester City", "Everton"],
+    correcta: 0
+  },
+  {
+    pregunta: "¿Qué entrenador ha ganado más títulos de la Premier League?",
+    respuesta: ["Pep Guardiola", "Arsène Wenger", "José Mourinho", "Sir Alex Ferguson"],
     correcta: 3
-    },
-    {
-    pregunta: "¿Cuál es el deporte en el que se utilizan patines y se compite en una pista ovalada?",
-    respuesta: ["Patinaje de velocidad", "Hockey sobre patines", "Patinaje artístico", "Roller derby"],
+  },
+  {
+    pregunta: "¿En qué año debutó Lionel Messi con el primer equipo del FC Barcelona?",
+    respuesta: ["2003", "2004", "2005", "2006"],
+    correcta: 0
+  },
+  {
+    pregunta: "¿Qué equipo español ganó la Europa League tres veces consecutivas entre 2014 y 2016?",
+    respuesta: ["Villarreal", "Atlético de Madrid", "Valencia", "Sevilla"],
     correcta: 3
-    },
-    {
-    pregunta: "¿Cuál es el deporte en el que se utilizan arcos y flechas?",
-    respuesta: ["Tiro con arco", "Esgrima", "Tiro al blanco", "Lanzamiento de jabalina"],
+  },
+  {
+    pregunta: "¿Cuál es el club más exitoso en la historia de la Serie A italiana?",
+    respuesta: ["Juventus", "AC Milan", "Inter de Milán", "Roma"],
     correcta: 0
-    },
-    {
-    pregunta: "¿Cuál es el deporte en el que se utilizan tablas y se practica en el mar?",
-    respuesta: ["Surf", "Windsurf", "Kitesurf", "Bodyboard"],
+  },
+  {
+    pregunta: "¿Qué jugador es apodado 'El Fenómeno' y jugó para Barcelona, Inter de Milán y Real Madrid?",
+    respuesta: ["Rivaldo", "Romário", "Ronaldo Nazário", "Ronaldinho"],
+    correcta: 2
+  },
+  {
+    pregunta: "¿Qué selección ganó la Copa Mundial de la FIFA en 2018?",
+    respuesta: ["Brasil", "Alemania", "Francia", "Argentina"],
+    correcta: 2
+  },
+  {
+    pregunta: "¿Qué jugador argentino fue el máximo goleador de la Serie A en múltiples temporadas durante los años 90?",
+    respuesta: ["Gabriel Batistuta", "Diego Maradona", "Hernán Crespo", "Juan Sebastián Verón"],
     correcta: 0
-    },
-    {
-    pregunta: "¿Cuál es el deporte en el que se utilizan pelotas de goma y se juega en una cancha cubierta?",
-    respuesta: ["Baloncesto", "Voleibol", "Balonmano", "Squash"],
+  },
+  {
+    pregunta: "¿Qué equipo ganó la Liga Española en la temporada 2020-2021?",
+    respuesta: ["Real Madrid", "FC Barcelona", "Atlético de Madrid", "Sevilla"],
+    correcta: 2
+  },
+  {
+    pregunta: "¿Qué portero tiene el récord de más partidos sin recibir goles en la Premier League?",
+    respuesta: ["Edwin van der Sar", "David de Gea", "Petr Čech", "Alisson Becker"],
+    correcta: 2
+  },
+  {
+    pregunta: "¿Qué jugador fue transferido del Borussia Dortmund al Manchester United en 2021?",
+    respuesta: ["Erling Haaland", "Jadon Sancho", "Robert Lewandowski", "Pierre-Emerick Aubameyang"],
+    correcta: 1
+  },
+  {
+    pregunta: "¿En qué año se celebró la primera edición de la Copa Mundial de la FIFA?",
+    respuesta: ["1930", "1946", "1950", "1966"],
     correcta: 0
-    }
-]
+  },
+  {
+    pregunta: "¿Qué jugador ganó el Balón de Oro en 2021?",
+    respuesta: ["Robert Lewandowski", "Lionel Messi", "Cristiano Ronaldo", "Kylian Mbappé"],
+    correcta: 1
+  },
+  {
+    pregunta: "¿Qué selección ha ganado más Copas del Mundo de la FIFA?",
+    respuesta: ["Alemania", "Argentina", "Italia", "Brasil"],
+    correcta: 3
+  },
+  {
+    pregunta: "¿Qué equipo ganó la Serie A en la temporada 2020-2021, rompiendo la racha de títulos de Juventus?",
+    respuesta: ["AC Milan", "Inter de Milán", "Roma", "Atalanta"],
+    correcta: 1
+  },
+  {
+    pregunta: "¿Qué jugador inglés es el máximo goleador de la historia del Tottenham Hotspur?",
+    respuesta: ["Harry Kane", "Gary Lineker", "Teddy Sheringham", "Dele Alli"],
+    correcta: 0
+  }
+];
+
 console.log(preguntas)
 
 console.log('Posició Actual: ',posicioActual)
