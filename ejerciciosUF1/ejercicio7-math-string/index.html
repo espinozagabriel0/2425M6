@@ -35,10 +35,10 @@
         <h4>Buscador</h4>
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">🔍</span>
-          <input type="text" class="form-control" placeholder="lorem" aria-label="Username" aria-describedby="basic-addon1">
-          <button class="btn btn-success ms-3">Buscar</button>
+          <input type="text" id="buscarInput" class="form-control" placeholder="lorem" aria-label="Username" aria-describedby="basic-addon1">
+          <button class="btn btn-success ms-3" id="buscarPalab">Buscar</button>
         </div>
-        <div class="border p-2"><span class="bg-primary text-light">lorem</span> ipsum dolor sit amet consectetur, adipisicing elit. Nihil voluptas aut necessitatibus placeat inventore fuga. Quisquam distinctio animi doloremque hic dignissimos quo id illum facere. Architecto quidem aliquam deserunt voluptates?</div>
+        <div class="border p-2" id="textoBuscador"><span class="bg-primary text-light">lorem</span> ipsum dolor sit amet consectetur, adipisicing elit. Nihil voluptas aut necessitatibus placeat inventore fuga. Quisquam distinctio animi doloremque hic dignissimos quo id illum facere. Architecto quidem aliquam deserunt voluptates?</div>
         <p>He encontrado <strong>1</strong> coincidencias</p>
 
         
@@ -52,14 +52,14 @@
       <div class="col-12 mt-3 border p-5">
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">Nombre: </span>
-          <input type="text" class="form-control" placeholder="Pepe Potamo" aria-label="Username" aria-describedby="basic-addon1">
+          <input type="text" id="nomInputEj3" class="form-control" placeholder="Pepe Potamo" aria-label="Username" aria-describedby="basic-addon1">
           <span class="input-group-text" id="basic-addon1">Fecha: </span>
-          <input type="text" class="form-control" placeholder="12/12/2022" aria-label="Username" aria-describedby="basic-addon1">
+          <input type="text" id="fechaInputEj3" class="form-control" placeholder="12/12/2022" aria-label="Username" aria-describedby="basic-addon1">
         </div>
-        <button class="btn btn-success">Convertir nombre</button>
-        <button class="btn btn-warning ms-3">Convertir fecha</button>
-        <p class="mt-2">Nombre convertido: <strong>PEPE-POTAMO</strong></p>
-        <p>Fecha convertida: <strong>12-12-2022</strong></p>
+        <button class="btn btn-success" id="btnConvNom">Convertir nombre</button>
+        <button class="btn btn-warning ms-3" id="btnConvFecha">Convertir fecha</button>
+        <p class="mt-2">Nombre convertido: <strong id="nomConvResult">PEPE-POTAMO</strong></p>
+        <p>Fecha convertida: <strong id="fechaConvResult">12-12-2022</strong></p>
       </div>
     </div>
 
