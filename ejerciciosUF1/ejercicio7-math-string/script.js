@@ -86,6 +86,7 @@ btnBuscar.addEventListener('click', function() {
 // Ej 3
 btnConvNom.addEventListener('click', function() {
     let resultado = (nombreInput.value.replace(" ", "-")).toUpperCase();
+
     //Convertir string a formato: s-s (sin espacios)
     nomConvResult.innerHTML = resultado;
 });

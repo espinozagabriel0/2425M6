@@ -1,0 +1,67 @@
+body{
+    background-color: rgb(226, 187, 14);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.container{
+    width: 1000px;
+    height: 800px;
+    position: relative;
+}
+.container-dados{
+    position: absolute;
+    display: flex;
+    gap: 1rem;
+    top: 2rem;
+    left: 10rem;
+}
+.container-tablero{
+    position: relative;
+    width: 100%;
+}
+.container-tablero img{
+    width: 100%;
+}
+.botonDado, .ficha{
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    font-weight: bold;
+}
+.ficha1, .ficha2{
+    position: absolute;
+}
+/*Referencias de 0 para las fichas
+    x: 472
+    y: 73
+*/
+.ficha1{
+    /* top: calc(640px - 73px);
+    left: calc(660px - 472px);    */   
+}
+.ficha2{
+    /* top: calc(622px - 73px);
+    left: calc(683px - 472px); */
+}
+.coordinates{
+    background-color: white;
+    width: 10rem;
+    position: absolute;
+    right: 5rem;
+    top: 1rem;
+}
+.boton1, .ficha1{
+    background-color: rgb(158, 24, 24);
+}
+.boton2, .ficha2{
+    background-color: orange;
+}
