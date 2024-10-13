@@ -9,20 +9,23 @@ body{
     width: 1000px;
     height: 800px;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 .container-dados{
     position: absolute;
     display: flex;
     gap: 1rem;
-    top: 2rem;
-    left: 10rem;
+    top: .5rem;
 }
 .container-tablero{
     position: relative;
-    width: 100%;
+    width: 900px;
 }
 .container-tablero img{
-    width: 100%;
+    width: 900px;
 }
 .botonDado, .ficha{
     height: 3rem;
@@ -47,6 +50,8 @@ body{
 .ficha1{
     /* top: calc(640px - 73px);
     left: calc(660px - 472px);    */   
+    top: 547px;
+    left: 195px;
 }
 .ficha2{
     /* top: calc(622px - 73px);

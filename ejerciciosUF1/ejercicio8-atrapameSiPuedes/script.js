@@ -21,42 +21,42 @@ const ficha2 = document.querySelector('.ficha2');
 const reload = document.querySelector('button#reload');
 
 const posiciones = [
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
-    {x: " px", y: " px"},
+    {x: "547", y: " 667"},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
 ];
 
 
@@ -65,7 +65,9 @@ tablero.addEventListener('mousemove', function(e) {
     coordY.innerHTML = e.clientY - referenciaY;
 })
 
-// //Función que situe las fichas en la posicion inicial
+
+
+//Función que situe las fichas en la posicion inicial
 reload.addEventListener('click', start);
 function start(){
     ficha1.style.top = "567" + "px";
