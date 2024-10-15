@@ -26,6 +26,7 @@ body{
 }
 .container-tablero img{
     width: 900px;
+    filter: sepia(80%);
 }
 .botonDado, .ficha{
     height: 3rem;
@@ -42,7 +43,8 @@ body{
 }
 .ficha1, .ficha2{
     position: absolute;
-    
+    z-index: 1;
+    transition: all .2s;
 }
 
 .coordinates{

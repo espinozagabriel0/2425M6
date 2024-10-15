@@ -145,10 +145,6 @@ function moverFicha(ficha, numPosiciones, posActual) {
     }
     console.log('pos actual J1: ', posActualFicha1 + 1);
     console.log('pos actual J2: ', posActualFicha2 + 1);    
-
-    // if (posActualFicha1 == posActualFicha2) {
-        
-    // }
     
     mover();
 }
