@@ -44,22 +44,7 @@ body{
     position: absolute;
     
 }
-/*Referencias de 0 para las fichas
-    x: 472
-    y: 73
-*/
-.ficha1{
-    /* top: calc(640px - 73px);
-    left: calc(660px - 472px);    */   
-    /* top: 520px;
-    left: 175px; */
-}
-.ficha2{
-    /* top: calc(622px - 73px);
-    left: calc(683px - 472px); */
-    /* top: 510px;
-    left: 195px; */
-}
+
 .coordinates{
     background-color: white;
     width: 10rem;
