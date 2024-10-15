@@ -1,4 +1,3 @@
-// EVENT-clientX, event.clientY (estará el top y el left relativo al div),  de essta forma guardamos lac oordenadas de las posiciones de cada casilla, en un array de documentos json
 console.log("tablero cargado")
 
     
@@ -25,7 +24,21 @@ const ficha2 = document.querySelector('.ficha2');
 const reload = document.querySelector('button#reload');
 
 const posiciones = [
-    {x: "187", y: "448"},
+    {x: "177", y: "440"},
+    {x: "196", y: "363"},
+    {x: "213", y: "298"},
+    {x: "222", y: "225"},
+    {x: "230", y: "150"}, // primera columna ascendente
+    {x: "314", y: "145"},
+    {x: "395", y: "145"},
+    {x: "466", y: "145"},
+    {x: "536", y: "145"},
+    {x: "613", y: "145"},
+    {x: "693", y: "145"}, // primera fila hacia la derecha
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""},
+    {x: "", y: ""}, // primera columna descendente
     {x: "", y: ""},
     {x: "", y: ""},
     {x: "", y: ""},
@@ -46,32 +59,16 @@ const posiciones = [
     {x: "", y: ""},
     {x: "", y: ""},
     {x: "", y: ""},
-    {x: "", y: ""},
-    {x: "", y: ""},
-    {x: "", y: ""},
-    {x: "", y: ""},
-    {x: "", y: ""},
-    {x: "", y: ""},
-    {x: "", y: ""},
-    {x: "", y: ""},
-    {x: "", y: ""},
-    {x: "", y: ""},
-    {x: "", y: ""},
-    {x: "", y: ""},
-    {x: "", y: ""},
-    {x: "", y: ""},
-    {x: "", y: ""},
+    {x: "", y: ""}
 ];
 
 
 
-tablero.addEventListener('mousemove', function(e) {
-    // coordX.innerHTML = e.clientX - referenciaX;
-    // coordY.innerHTML = e.clientY - referenciaY;
-    
+tablero.addEventListener('mousemove', function(e) { 
     let tableroCoord = tablero.getBoundingClientRect();
+    
     //relativo al viewport
-    coordX.innerHTML = e.clientX - tableroCoord.left;
+    coordX.innerHTML = e.clientX - Math.floor(tableroCoord.left);
     coordY.innerHTML = e.clientY - Math.floor(tableroCoord.top);
 
 });
@@ -82,18 +79,35 @@ console.log(tablero.getBoundingClientRect());
 //Función que situe las fichas en la posicion inicial
 reload.addEventListener('click', start);
 function start(){
-    // ficha1.style.top = "520" + "px";
-    // ficha1.style.left = "175" + "px";
-    // ficha2.style.top = "510" + "px";
-    // ficha2.style.left = "195" + "px";
-
     ficha1.style.top = "526px";
-    ficha1.style.left = "176px";
-    ficha2.style.top = "520px";
-    ficha2.style.left = "210px";
+    ficha1.style.left = "166px";
+    ficha2.style.top = "512px";
+    ficha2.style.left = "205px";
 
 }
+
 dado1.addEventListener('click', function() {
-    ficha1.style.top = posiciones[0].y + 'px';
-    ficha1.style.left = posiciones[0].x + 'px';
+    moverFicha(ficha1);
+});
+
+function moverFicha(ficha) {
+    let i = 0;
+    
+    function mover() {
+        if (i <= 12 && i < posiciones.length) {
+            ficha.style.top = posiciones[i].y + 'px';
+            ficha.style.left = posiciones[i].x + 'px';
+            i++;
+            setTimeout(mover, 500);
+        }
+    }
+    
+    mover();
+}
+
+
+
+dado2.addEventListener('click', function() {
+    ficha2.style.top = '';
+    ficha2.style.left = '';
 });
