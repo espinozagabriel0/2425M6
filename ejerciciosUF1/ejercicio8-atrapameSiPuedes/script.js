@@ -14,6 +14,8 @@ const coordX = document.querySelector('span#coordX');
 const coordY = document.querySelector('span#coordY');
 const dado1 = document.querySelector('div.boton1');
 const dado2 = document.querySelector('div.boton2');
+const msjPartida = document.querySelector('#mensajePartida');
+
 
 //FICHAS de los jugadores
 const ficha1 = document.querySelector('.ficha1');
@@ -70,16 +72,18 @@ const posiciones = [
     {x: "534", y: "318"}, //34, 36
 ];
 
-
-
-tablero.addEventListener('mousemove', function(e) { 
-    let tableroCoord = tablero.getBoundingClientRect();
-    
-    //relativo al viewport
-    coordX.innerHTML = e.clientX - Math.floor(tableroCoord.left);
-    coordY.innerHTML = e.clientY - Math.floor(tableroCoord.top);
-
+document.addEventListener('DOMContentLoaded', function() {
+    start();
 });
+
+// tablero.addEventListener('mousemove', function(e) { 
+//     let tableroCoord = tablero.getBoundingClientRect();
+    
+//     //relativo al viewport
+//     coordX.innerHTML = e.clientX - Math.floor(tableroCoord.left);
+//     coordY.innerHTML = e.clientY - Math.floor(tableroCoord.top);
+
+// });
 
 console.log(tablero.getBoundingClientRect());
 
@@ -93,6 +97,9 @@ function start(){
     ficha2.style.left = posiciones[0].x + 'px';
     posActualFicha1 = 0;
     posActualFicha2 = 0;
+    txtDado1.innerHTML = '';
+    txtDado2.innerHTML = '';
+    console.clear();
 }
 
 //DADO 1er JUGADOR
@@ -103,7 +110,8 @@ dado1.addEventListener('click', function() {
     txtDado1.innerHTML = numPosiciones;
 
     moverFicha(ficha1, numPosiciones, posActualFicha1);
-
+    console.log(posActualFicha1);
+    comprobarCasilla(ficha1, posActualFicha1 + 1);
 });
 
 // DADO 2o JUGADOR
@@ -114,7 +122,8 @@ dado2.addEventListener('click', function() {
     txtDado2.innerHTML = numPosiciones;
 
     moverFicha(ficha2, numPosiciones, posActualFicha2);
-
+    console.log(posActualFicha2);
+    comprobarCasilla(ficha2, posActualFicha2 + 1);
 });
 
 function moverFicha(ficha, numPosiciones, posActual) {
@@ -128,10 +137,13 @@ function moverFicha(ficha, numPosiciones, posActual) {
         console.log("te has pasado!")
     }
 
+    let casilla = '';
     if (ficha == ficha1) {
-        posActualFicha1 += numPosiciones    
+        posActualFicha1 += numPosiciones;
+        casilla = posActualFicha1;    
     }else{
         posActualFicha2 += numPosiciones;
+        casilla = posActualFicha2;
     }
 
     function mover() {        
@@ -146,5 +158,46 @@ function moverFicha(ficha, numPosiciones, posActual) {
     console.log('pos actual J1: ', posActualFicha1 + 1);
     console.log('pos actual J2: ', posActualFicha2 + 1);    
     
+    // console.log(casilla)
     mover();
+}
+
+// TODO: FUNCION QUE COMPRUEBA LA CASILLA EN LA QUE ESTA EL JUGADOR, Y HACE LAS ACCIONES CORRESPONDIENTES
+function comprobarCasilla(ficha, casilla) {
+    switch (casilla) {
+        case 5: // pierde un turno
+            console.log("pierdes un turno");
+            
+            break;
+        case 7: // avanza a posicion 11
+            // alert('avanzas a la otra estrella');
+            console.log('asdf')
+            ficha
+            break;
+        case 12: //vuelve a la posicion inicial
+            // alert("vuelves al principio")
+            ficha.style.top = posiciones[0].y + 'px';
+            ficha.style.left = posiciones[0].x + 'px';
+            break;
+        case 14:
+            alert('suerte');
+            break;
+        case 18:
+            alert('pierdes un turno');
+            break;
+        case 22:
+            alert('avanzas 2 casillas');
+            break;
+        case 25:
+            alert('mala suerte');
+            break;
+        case 30:
+            alert('vuelves a casilla 27');
+            break;
+        case 31:
+            alert('tira otra vez');
+            break;
+        default:
+            // mostrar pregunta
+    }
 }
