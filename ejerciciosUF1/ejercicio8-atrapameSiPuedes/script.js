@@ -101,6 +101,12 @@ function start(){
     console.clear();
     // preguntasQuiz.style.display = "none";
     preguntasQuiz.style.top = "-50rem";
+    dado1.removeAttribute('disabled');
+    dado2.removeAttribute('disabled');
+    dado1.style.cursor = "pointer";
+    dado2.style.cursor = "pointer";
+    dado1.style.opacity = "1";
+    dado2.style.opacity = "1";
 }
 
 //DADO 1er JUGADOR
@@ -178,6 +184,9 @@ function moverFicha(ficha, numPosiciones, posActual) {
     
     // console.log(casilla)
     mover();
+
+    //TODO: determinar si una ficha ha llegado 
+
 }
 
 // TODO: FUNCION QUE COMPRUEBA LA CASILLA EN LA QUE ESTA EL JUGADOR, Y HACE LAS ACCIONES CORRESPONDIENTES
@@ -248,8 +257,8 @@ function comprobarCasilla(ficha, casilla) {
             break;
         case 22:
             alert('avanzas 2 casillas');
-            ficha.style.top = posiciones[casilla+2].y + 'px';
-            ficha.style.left = posiciones[casilla+2].x + 'px';
+            ficha.style.top = posiciones[casilla+1].y + 'px';
+            ficha.style.left = posiciones[casilla+1].x + 'px';
             (ficha == ficha1) ? posActualFicha1+=2: posActualFicha2+=2;
             break;
         case 25:
@@ -275,6 +284,10 @@ function comprobarCasilla(ficha, casilla) {
             ficha.style.left = posiciones[19].x + 'px';
             (ficha == ficha1) ? posActualFicha1=20: posActualFicha2=20;
             break;
+        case 36:
+            let ganador = '';
+            (ficha == ficha1) ? ganador="1": ganador = "2";
+            alert("El jugador " + ganador + "ha ganado!");
         default:
             // mostrar pregunta
             cargarPreguntaAleatoria(ficha, casilla);
@@ -284,8 +297,6 @@ function comprobarCasilla(ficha, casilla) {
 
 
 // PREGUNTAS para las casillas sin acciones concretas
-
-
 const preguntas = [
   {
     pregunta: "¿Qué equipo ha ganado más títulos de la Premier League desde su creación en 1992?",
