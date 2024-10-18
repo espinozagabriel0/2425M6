@@ -11,15 +11,29 @@
     <div class="coordinates">
         <!-- <p>X: <span id="coordX"></span></p>
         <p>y: <span id="coordY"></span></p> -->
-        <p>Dado 1: <span id="dado1Mostrar"></span></p>
-        <p>Dado 2: <span id="dado2Mostrar"></span></p>
+        <div class="quiz-container">
+            <h1 class="text-center">Quiz de Preguntes</h1>
+            <div id="quiz">
+              <h2 id="question" class="mt-4">Cargando pregunta...</h2>
+              <div id="answers" class="d-grid gap-2 mt-3">
+                <button class="btn btn-primary" id="answer1">Respuesta 1</button>
+                <button class="btn btn-primary" id="answer2">Respuesta 2</button>
+                <button class="btn btn-primary" id="answer3">Respuesta 3</button>
+                <button class="btn btn-primary" id="answer4">Respuesta 4</button>
+              </div>
+              <div id="result" class="alert alert-danger mt-3" style="display: none;"></div>
+              <!-- <button id="next-question" class="btn btn-secondary mt-3">Siguiente Pregunta</button> -->
+            </div>
+          </div>
+        <!-- <p>Dado 1: <span id="dado1Mostrar"></span></p>
+        <p>Dado 2: <span id="dado2Mostrar"></span></p> -->
         <p id="mensajePartida"></p>
     </div>
     <div class="container-dados p-2">
-        <div class="botonDado boton1">J1</div>
-        <div class="botonDado boton2">J2</div>
+        <button class="botonDado boton1">J1</button>
+        <button class="botonDado boton2">J2</button>
     </div>
-    <div class="container border">
+    <div class="container">
         <div class="container-tablero">
             <div class="ficha ficha1"></div>
             <div class="ficha ficha2"></div>

@@ -18,6 +18,7 @@ body{
     position: absolute;
     display: flex;
     gap: 1rem;
+    z-index: 1;
     top: .5rem;
 }
 .container-tablero{
@@ -49,9 +50,16 @@ body{
 
 .coordinates{
     background-color: white;
-    width: 10rem;
+    width: 40rem;
+    padding: 1rem;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 2;
+    border-radius: .75rem;
     position: absolute;
+    text-align: center;
     right: 5rem;
+    display: none;
     top: 1rem;
 }
 .boton1, .ficha1{
