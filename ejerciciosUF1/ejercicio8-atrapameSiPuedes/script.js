@@ -88,6 +88,8 @@ console.log(tablero.getBoundingClientRect());
 //Función que situe las fichas en la posicion inicial
 reload.addEventListener('click', start);
 function start(){
+    dado1.removeAttribute('disabled');
+    dado2.removeAttribute('disabled');
     ficha1.style.top = posiciones[0].y + 'px';
     ficha1.style.left = posiciones[0].x + 'px';
     ficha2.style.top = posiciones[0].y + 'px';
@@ -97,7 +99,8 @@ function start(){
     // txtDado1.innerHTML = '';
     // txtDado2.innerHTML = '';
     console.clear();
-    preguntasQuiz.style.display = "none";
+    // preguntasQuiz.style.display = "none";
+    preguntasQuiz.style.top = "-50rem";
 }
 
 //DADO 1er JUGADOR
@@ -109,7 +112,6 @@ dado1.addEventListener('click', function() {
 
     moverFicha(ficha1, numPosiciones, posActualFicha1);
     console.log(posActualFicha1);
-    // comprobarCasilla(ficha1, posActualFicha1 + 1);
 });
 
 // DADO 2o JUGADOR
@@ -121,7 +123,6 @@ dado2.addEventListener('click', function() {
 
     moverFicha(ficha2, numPosiciones, posActualFicha2);
     console.log(posActualFicha2);
-    // comprobarCasilla(ficha2, posActualFicha2 + 1);
 });
 
 function moverFicha(ficha, numPosiciones, posActual) {
@@ -131,10 +132,12 @@ function moverFicha(ficha, numPosiciones, posActual) {
     let i = posActual;
     let casillaFinal = numPosiciones + posActual;
 
-    if (casillaFinal > 36) {
-        casillaFinal = 36;
-        console.log("te has pasado!");
-    }
+    // if (casillaFinal > 36) {
+    //     casillaFinal = 36;
+    //     console.log("te has pasado!");
+    // }else{
+
+    // }
 
     let casilla = '';
     if (ficha == ficha1) {
@@ -146,14 +149,28 @@ function moverFicha(ficha, numPosiciones, posActual) {
     }
 
     function mover() {        
-        if (i <= casillaFinal) {
-            ficha.style.top = posiciones[i].y + 'px';
-            ficha.style.left = posiciones[i].x + 'px';
-            
-            i++;
-            setTimeout(mover, 300);
+        if (casillaFinal > 36) {
+            // // casillaFinall = 36;
+            // let j = 36 - casillaFinal;
+            // if (j < casillaFinal) {
+            //     ficha.style.top = posiciones[i].y + 'px';
+            //     ficha.style.left = posiciones[i].x + 'px';
+                
+            //     i--;
+            //     setTimeout(mover, 275);
+            // }else{
+            //     comprobarCasilla(ficha, casilla+1);
+            // }
         }else{
-            comprobarCasilla(ficha, casilla+1);
+            if (i <= casillaFinal) {
+                ficha.style.top = posiciones[i].y + 'px';
+                ficha.style.left = posiciones[i].x + 'px';
+                
+                i++;
+                setTimeout(mover, 275);
+            }else{
+                comprobarCasilla(ficha, casilla+1);
+            }
         }
     }
     console.log('pos actual J1: ', posActualFicha1 + 1);
@@ -165,8 +182,13 @@ function moverFicha(ficha, numPosiciones, posActual) {
 
 // TODO: FUNCION QUE COMPRUEBA LA CASILLA EN LA QUE ESTA EL JUGADOR, Y HACE LAS ACCIONES CORRESPONDIENTES
 function comprobarCasilla(ficha, casilla) {
+    
     dado1.removeAttribute('disabled');
     dado2.removeAttribute('disabled');
+    dado1.style.cursor = "pointer";
+    dado2.style.cursor = "pointer";
+    dado1.style.opacity = "1";
+    dado2.style.opacity = "1";
     
     switch (casilla) {
         case 2: 
@@ -177,8 +199,19 @@ function comprobarCasilla(ficha, casilla) {
             break;
         case 5: // pierde un turno
             alert("pierdes un turno");
-            //deshabilitar el boton una vez
+
+            //deshabilitar el boton correspondiente
             (ficha == ficha1) ? dado1.setAttribute('disabled', true) : dado2.setAttribute('disabled', true);
+            // (dado1.hasAttribute('disabled')) ? dado1.style.opacity = ".5" : dado2.style.opacity = '.5';
+
+            if (dado1.hasAttribute('disabled')) {
+                dado1.style.opacity = ".3";
+                dado1.style.cursor = "auto";
+            }else{
+                dado2.style.opacity = ".3"
+                dado2.style.cursor = "auto";
+            }
+
             break;
         case 7: // avanza a posicion 11
             alert('avanzas a la estrella 11');
@@ -203,6 +236,15 @@ function comprobarCasilla(ficha, casilla) {
         case 18:
             alert('pierdes un turno');
             (ficha == ficha1) ? dado1.setAttribute('disabled', true) : dado2.setAttribute('disabled', true);
+            // (ficha == ficha1) ? dado1.setAttribute('disabled', true) : dado2.setAttribute('disabled', true);
+
+            if (dado1.hasAttribute('disabled')) {
+                dado1.style.opacity = ".3";
+                dado1.style.cursor = "auto";
+            }else{
+                dado2.style.opacity = ".3"
+                dado2.style.cursor = "auto";
+            }
             break;
         case 22:
             alert('avanzas 2 casillas');
@@ -224,6 +266,8 @@ function comprobarCasilla(ficha, casilla) {
             break;
         case 31:
             alert('tira otra vez');
+            // si el jugador uno ha de tirar una vez, se deshabilita el dado al jugador 2
+            (ficha == ficha1) ? dado2.setAttribute('disabled', true) : dado1.setAttribute('disabled', true);
             break;
         case 33: 
             alert('vuelves a casilla 20');
@@ -234,11 +278,9 @@ function comprobarCasilla(ficha, casilla) {
         default:
             // mostrar pregunta
             cargarPreguntaAleatoria(ficha, casilla);
-            preguntasQuiz.style.display = "block";
+            preguntasQuiz.style.top = "1rem";
     }
 }
-
-
 
 
 // PREGUNTAS para las casillas sin acciones concretas
@@ -426,6 +468,7 @@ function cargarPreguntaAleatoria(ficha, posActual) {
     document.querySelector('#answers').innerHTML = botonesRespuestas;
     respuestaEscogida(ficha, posActual);
 }
+
 function respuestaEscogida(ficha, posActual) {
     let opcionEscogida = document.querySelectorAll('button.btn-primary') ;
     let numRespuestaCorrecta = preguntaCargada.correcta;
@@ -447,10 +490,16 @@ function respuestaEscogida(ficha, posActual) {
                 alert("Pierdes una posicion!");
                 ficha.style.top = posiciones[posActual-2].y + "px";
                 ficha.style.left = posiciones[posActual-2].x + "px";
+
+                //comprobamos la casilla despues de retrocederla, por si cae en una casilla especial
+                comprobarCasilla(ficha, posActual-1);
+            
+                // si la ficha pasada como parámetro es la primera, decrementamos la posicion actual de esta, sino, de la segunda ficha.
                 (ficha == ficha1) ? posActualFicha1--: posActualFicha2--;
             }
 
-            preguntasQuiz.style.display = 'none';
+            // preguntasQuiz.style.display = 'none';
+            preguntasQuiz.style.top = "-50rem";
                 
         });
     }
