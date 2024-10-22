@@ -97,6 +97,15 @@ btnConvFecha.addEventListener('click', function() {
 
 
 
+/*
+
+metodos utiles:
+
+includes, match, split, indexOf....
+padEnd --> añadir el final con text hasta llegar al tamaño size
+*/
+
+
 
 
 
