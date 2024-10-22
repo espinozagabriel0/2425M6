@@ -74,24 +74,75 @@ pregunta.innerHTML = preguntasRespuestas[0][0];
 respuesta.innerHTML = preguntasRespuestas[0][1];
 
 // EJ 9
+const divResultado = document.querySelector('div#resultatSuma');
+const btnSuma = document.querySelector('button#botonSuma');
+btnSuma.addEventListener('click', function () {
+    divResultado.innerHTML = sumar(3, 5);
+});
 
-
+function sumar(num1, num2){
+    return num1 + num2;
+}
 // EJ 10
+const inputEntrada = document.querySelector('input#entrada');
+const btnValidar = document.querySelector('button#botonValidar');
+const divValidar = document.querySelector('div#divValidar');
 
-
+btnValidar.addEventListener('click', function() {
+    (inputEntrada.value.trim() === "") ? divValidar.innerHTML = "Introduce un valor correcto" : divValidar.innerHTML = "";
+});
 // EJ 11
+
+const btnAlert = document.querySelector('button#botonAlerta');
+btnAlert.addEventListener('click', function() {
+    alert("Has clickat el botó!");
+});
 
 
 // EJ 12
+const btnComparar = document.querySelector('button#botonComparar');
+btnComparar.addEventListener('click', function() {
+    comparar(10)
+});
 
-
+function comparar(n1) {
+    if (n1 == 10) {
+        alert("Es igual a 10");
+    }else if (n1 < 10) {
+        alert("Es menor a 10");
+    }else{
+        alert("Es mayor a 10");
+    }
+}
 // EJ 13
+const img13 = document.querySelector('img#imatge13');
+const resultat13 = document.querySelector('div#resultat13')
+const btnMostrarSrc = document.querySelector('button#mostrarSrc');
 
+btnMostrarSrc.addEventListener('click', function() {
+    resultat13.innerHTML = img13.getAttribute('src');
+});
 
 // EJ 14
+const img14 = document.querySelector('img#imatge14');
+const btnEliminarAlt= document.querySelector('button#eliminarAlt');
 
-
+btnEliminarAlt.addEventListener('click', function() {
+    img14.removeAttribute('alt');
+});
 // EJ 15
+let numeros = [2, 5, 3, 7, 140, 11, 1, 6];
+const result15 = document.querySelector('div#resultat15'); 
+
+let numerosFiltrados = '';
+numeros.forEach(num => {
+    if (num % 2 == 0) {
+        numerosFiltrados += `<p>${num}</p>`;
+    }
+});
+result15.innerHTML = numerosFiltrados;
+
+// EXCERCICIS JAVASCRIPT (MATH)
 
 
 // EJ 16
