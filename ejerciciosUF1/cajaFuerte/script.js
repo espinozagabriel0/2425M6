@@ -144,14 +144,178 @@ result15.innerHTML = numerosFiltrados;
 
 // EXCERCICIS JAVASCRIPT (MATH)
 
+// EJ 1
+function valorAbsolut(num) {
+    return Math.abs(num);
+}
+// EJ 2
+function determinarSigne(num) {
+    const signe = Math.sign(num);
+    if (signe === 1) return "El número és positiu.";
+    if (signe === -1) return "El número és negatiu.";
+    return "El número és zero.";
+}
+// EJ 3
+function trobarMaxim(a, b, c) {
+    return Math.max(a, b, c);
+}
+// EJ 4
+let numerosSpread = [3, 7, 2, 9, 4];
+function trobarMinim(arrayNumeros) {
+    return Math.min(...arrayNumeros);
+}
+console.log(trobarMinim(numerosSpread)); // Retorna 2
 
-// EJ 16
+// EJ 5
+function calcularArrelQuadrada(num) {
+    if (num < 0) return "No es pot calcular l'arrel quadrada d'un número negatiu.";
+    return Math.sqrt(num);
+}
+console.log(calcularArrelQuadrada(16)); // Retorna 4
+console.log(calcularArrelQuadrada(-9)); // Retorna "No es pot calcular l'arrel quadrada d'un número negatiu."
 
+// EJ 6
+function arrodonirNumero(num) {
+    return Math.round(num);
+}
 
-// EJ 17
+// Exemple d'ús:
+console.log(arrodonirNumero(4.6)); // Retorna 5
+console.log(arrodonirNumero(4.3)); // Retorna 4
 
+// EJ 7
+function arrodonirCapAmunt(num) {
+    return Math.ceil(num);
+}
 
-// EJ 18
+// Exemple d'ús:
+console.log(arrodonirCapAmunt(3.1)); // Retorna 4
+console.log(arrodonirCapAmunt(7.9)); // Retorna 8
 
+// EJ 8
 
-// EJ 19
+function arrodonirCapAvall(num) {
+    return Math.floor(num);
+}
+
+console.log(arrodonirCapAvall(5.8)); // Retorna 5
+console.log(arrodonirCapAvall(2.2)); // Retorna 2
+// EJ 9
+
+function truncarNumero(num) {
+    return Math.trunc(num);
+}
+console.log(truncarNumero(6.7));   // Retorna 6
+console.log(truncarNumero(-6.7));  // Retorna -6
+// EJ 10
+
+function calcularSinus(angleGraus) {
+    const angleRadians = angleGraus * (Math.PI / 180);
+    return Math.sin(angleRadians);
+}
+console.log(calcularSinus(30)); // Retorna 0.5
+console.log(calcularSinus(90)); // Retorna 1
+
+// Excercicis JS Strings
+
+//EJ 1
+function interpolarVariables(nom, edat) {
+    return `El meu nom és ${nom} i tinc ${edat} anys.`;
+}
+console.log(interpolarVariables("Joan", 25)); // Retorna "El meu nom és Joan i tinc 25 anys."
+//EJ 2
+function obtenirCaracter(cadena, posicio) {
+    return cadena.charAt(posicio);
+}
+console.log(obtenirCaracter("Hola", 1)); // Retorna "o"
+//EJ 3
+function trobarPosicio(cadena, subcadena) {
+    return cadena.indexOf(subcadena);
+}
+console.log(trobarPosicio("JavaScript és genial", "genial")); // Retorna 14
+//EJ 4
+function repetirCadena(cadena, vegades) {
+    return cadena.repeat(vegades);
+}
+console.log(repetirCadena("Hola", 3)); // Retorna "HolaHolaHola"
+//EJ 5
+function obtenirSubstring(cadena, inici, fi) {
+    return cadena.substring(inici, fi);
+}
+console.log(obtenirSubstring("JavaScript", 0, 4)); // Retorna "Java"
+//EJ 6
+function obtenirSubstr(cadena, inici, longitud) {
+    return cadena.substr(inici, longitud);
+}
+console.log(obtenirSubstr("JavaScript", 4, 6)); // Retorna "Script"
+//EJ 7
+function dividirCadena(cadena, separador) {
+    return cadena.split(separador);
+}
+console.log(dividirCadena("poma,pera,plàtan", ",")); // Retorna ["poma", "pera", "plàtan"]
+//EJ 8
+function comencaAmb(cadena, subcadena) {
+    return cadena.startsWith(subcadena);
+}
+console.log(comencaAmb("JavaScript", "Java")); // Retorna true
+//EJ 9
+function acabaAmb(cadena, subcadena) {
+    return cadena.endsWith(subcadena);
+}
+console.log(acabaAmb("JavaScript", "Script")); // Retorna true
+//EJ 10
+function contéSubcadena(cadena, subcadena) {
+    return cadena.includes(subcadena);
+}
+console.log(contéSubcadena("JavaScript és genial", "genial")); // Retorna true
+//EJ 11
+function cercarCadena(cadena, subcadena) {
+    return cadena.search(subcadena);
+}
+console.log(cercarCadena("JavaScript és genial", "genial")); // Retorna 14
+//EJ 12
+function buscarCoincidencies(cadena, patró) {
+    return cadena.match(patró);
+}
+console.log(buscarCoincidencies("Hola 123, adéu 456", /\d+/g)); // Retorna ["123", "456"]
+
+//EJ 13
+function substituirCadena(cadena, vellSubcadena, nouSubcadena) {
+    return cadena.replace(vellSubcadena, nouSubcadena);
+}
+console.log(substituirCadena("Hola món", "món", "JavaScript")); // Retorna "Hola JavaScript"
+//EJ 14
+function substituirTotes(cadena, vellSubcadena, nouSubcadena) {
+    return cadena.replaceAll(vellSubcadena, nouSubcadena);
+}
+console.log(substituirTotes("Hola món, món", "món", "JavaScript")); // Retorna "Hola JavaScript, JavaScript"
+
+//EJ 15
+function convertirMinuscules(cadena) {
+    return cadena.toLowerCase();
+}
+console.log(convertirMinuscules("Hola Món")); // Retorna "hola món"
+
+//EJ 16
+function convertirMajuscules(cadena) {
+    return cadena.toUpperCase();
+}
+console.log(convertirMajuscules("Hola Món")); // Retorna "HOLA MÓN"
+
+//EJ 17
+function eliminarEspaisInicials(cadena) {
+    return cadena.trimStart();
+}
+console.log(eliminarEspaisInicials("   Hola Món")); // Retorna "Hola Món"
+
+//EJ 18
+function eliminarEspaisFinals(cadena) {
+    return cadena.trimEnd();
+}
+console.log(eliminarEspaisFinals("Hola Món   ")); // Retorna "Hola Món"
+
+//EJ 19
+function eliminarEspaisExtrems(cadena) {
+    return cadena.trim();
+}
+console.log(eliminarEspaisExtrems("   Hola Món   ")); // Retorna "Hola Món"
