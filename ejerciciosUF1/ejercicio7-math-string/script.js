@@ -13,7 +13,7 @@ const contadorPalabras = document.querySelector('strong#contadorPalab');
 const btnBuscar = document.querySelector('#buscarPalab');
 const buscarInput = document.querySelector('input#buscarInput');
 const textoABuscar = document.querySelector('div#textoBuscador');
-
+const coincidenciasSpan = document.querySelector('strong#coincidenciasBuscar')
 
 // Ejercicio 3
 const nombreInput = document.querySelector('input#nomInputEj3');
@@ -21,9 +21,16 @@ const fechaInput = document.querySelector('input#fechaInputEj3');
 const btnConvNom = document.querySelector('button#btnConvNom');
 const btnConvFecha = document.querySelector('button#btnConvFecha');
 const nomConvResult = document.querySelector('strong#nomConvResult');
-const fechaConvResult = document.querySelector('strong#nomConvResult');
+const fechaConvResult = document.querySelector('strong#fechaConvResult');
 
 // Ejercicio 4
+const passwd = document.querySelector("input#pass")
+const btnGenerar = document.querySelector('button#generarPass')
+
+//Ejercicio 5
+const emojiDiv = document.querySelector('div#emoji');
+const btnEmoji = document.querySelector('button#generarEmoji');
+
 
 // Ej 1
 function generarRandom(numInicial, numFinal) {
@@ -71,14 +78,12 @@ btnMinus.addEventListener('click', function() {
 // Buscar palabra
 btnBuscar.addEventListener('click', function() {
     let texto = buscarInput.value.trim();
-    let txtBuscar = texto.split(" ");
+    // let txtBuscar = texto.split(" ");
     // console.log(txt);
-    let txt = textoABuscar.split(" ");
-
-    //Buscar texto 
-    for (let i = 0; i < txt.length; i++) {
-      
-    }
+    let encontrado = textoABuscar.textContent.match(texto);
+    
+    console.log(encontrado.index);
+    console.log(encontrado);
 });
 
 
@@ -92,10 +97,31 @@ btnConvNom.addEventListener('click', function() {
 });
 
 btnConvFecha.addEventListener('click', function() {
-    
+    fechaConvResult.innerHTML = fechaInput.value.trim().replaceAll("/", "-")
 });
 
+// Ej 4
+btnGenerar. addEventListener('click', function() {
+    let posiblesValores = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let arrPasswd = posiblesValores.split('');
+    let passwdValue = '';
 
+    for (let i = 0; i < 10; i++) {
+        let posRandom = generarRandom(0, arrPasswd.length-1);
+        passwdValue += arrPasswd[posRandom];
+    }
+    passwd.value = passwdValue;
+});
+
+// Ej 5
+
+btnEmoji.addEventListener('click', function() {
+    let emojisArray = ["&#x1F600;", "&#x1F601;", "&#x1F602;", "&#x1F923;", "&#x1F603;", "&#x1F604;", "&#x1F605;", "&#x1F913;", "&#x1F61C;", "&#x1F631;", "&#x1F480;", "&#x1F639;", "&#x1F648;", "&#x1F466;", "&#x1F482;", "	&#x1F473;", "&#x1F3FF;", "&#x1F3C3;", "&#x1F3FF;", "&#x1F3FD;", "&#x1F921;"];
+
+    let emojiRandom = emojisArray[generarRandom(0, emojisArray.length-1)];
+    emojiDiv.innerHTML = emojiRandom;
+
+});
 
 /*
 
