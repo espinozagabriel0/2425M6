@@ -149,9 +149,29 @@ function moverFicha(ficha, numPosiciones, posActual) {
     if (ficha == ficha1) {
         posActualFicha1 += numPosiciones;
         casilla = posActualFicha1;    
+
+        
+        setTimeout(() => {
+          if (posActualFicha2 == posActualFicha1) {
+            // alert("El jugador 2 ha de volver al principio!")
+            ficha2.style.top = posiciones[0].y  + 'px';
+            ficha2.style.left = posiciones[0].x + 'px';
+            posActualFicha2 = 0;
+          }
+          
+        }, 1500);
+
     }else{
         posActualFicha2 += numPosiciones;
         casilla = posActualFicha2;
+        setTimeout(() => {
+          if (posActualFicha1 == posActualFicha2) {
+            // alert("El jugador 1 ha de volver al principio!");
+            ficha1.style.top = posiciones[0].y  + 'px';
+            ficha1.style.left = posiciones[0].x + 'px';
+            posActualFicha1 = 0;
+          }
+        }, 1500);
     }
 
     function mover() {        
@@ -490,7 +510,7 @@ function respuestaEscogida(ficha, posActual) {
 
             if (opcionEscogida[i].innerHTML == preguntaCargada.respuesta[numRespuestaCorrecta]) {
                 console.log(`La respuesta ${opcionEscogida[i].innerHTML} es correcta!`);
-                opcionEscogida[i].classList.add('bg-success');
+                // opcionEscogida[i].classList.add('bg-success');
                 resultadoError.style.display = "none";
                 alert("Bien!");
             }else{
