@@ -1,5 +1,5 @@
 body{
-    background-color: #e2bb0e;
+    /* background-color: #e2bb0e; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,7 +27,7 @@ body{
 }
 .container-tablero img{
     width: 900px;
-    filter: sepia(80%);
+    filter: brightness(70%);
 }
 .botonDado, .ficha{
     height: 3rem;
@@ -44,6 +44,10 @@ body{
 }
 button[id="reload"]{
     border-radius: .5rem;
+    border: none;
+    padding: 1rem;
+    color: white;
+    background-color: rgb(70, 70, 233);
     padding: .25rem 1rem;
 }
 .ficha1, .ficha2{
