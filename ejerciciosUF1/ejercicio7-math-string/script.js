@@ -13,7 +13,9 @@ const contadorPalabras = document.querySelector('strong#contadorPalab');
 const btnBuscar = document.querySelector('#buscarPalab');
 const buscarInput = document.querySelector('input#buscarInput');
 const textoABuscar = document.querySelector('div#textoBuscador');
-const coincidenciasSpan = document.querySelector('strong#coincidenciasBuscar')
+const coincidenciasSpan = document.querySelector('strong#coincidenciasBuscar');
+
+const resumen = document.querySelector('div#resumen');
 
 // Ejercicio 3
 const nombreInput = document.querySelector('input#nomInputEj3');
@@ -82,22 +84,35 @@ btnBuscar.addEventListener('click', function() {
     // console.log(txt);
     let encontrado = textoABuscar.textContent.match(texto);
     
-    console.log(encontrado.index);
+    coincidenciasSpan.innerHTML = encontrado.length;
+    console.log(encontrado.length);
     console.log(encontrado);
 });
 
+//resumen de parrafo
+let resumenString = '';
+
+let txtResumen = textoABuscar.textContent.split(" "); 
+for (let i = 0; i < 10; i++) {
+    resumenString = resumenString+" " + txtResumen[i];
+}
+resumenString += '...'
+resumen.innerHTML = resumenString;
 
 
 // Ej 3
 btnConvNom.addEventListener('click', function() {
-    let resultado = (nombreInput.value.replace(" ", "-")).toUpperCase();
+    let resultado = (nombreInput.value.replaceAll(" ", "-")).toUpperCase();
 
     //Convertir string a formato: s-s (sin espacios)
     nomConvResult.innerHTML = resultado;
 });
 
 btnConvFecha.addEventListener('click', function() {
-    fechaConvResult.innerHTML = fechaInput.value.trim().replaceAll("/", "-")
+    //TODO: VALIDAR FECHA Y FORMATEARLA
+    const fecha = new Date(fechaInput.value.trim()).toLocaleDateString('en-US');
+    fechaConvResult.innerHTML = fecha.replaceAll("/", "-");
+
 });
 
 // Ej 4
