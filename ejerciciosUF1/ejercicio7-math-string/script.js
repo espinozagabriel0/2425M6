@@ -80,13 +80,23 @@ btnMinus.addEventListener('click', function() {
 // Buscar palabra
 btnBuscar.addEventListener('click', function() {
     let texto = buscarInput.value.trim();
-    // let txtBuscar = texto.split(" ");
-    // console.log(txt);
-    let encontrado = textoABuscar.textContent.match(texto);
-    
-    coincidenciasSpan.innerHTML = encontrado.length;
-    console.log(encontrado.length);
+
+    let regex = new RegExp(texto, 'g')
+    let encontrado = textoABuscar.textContent.match(regex);
+    console.log(encontrado)
+
+    if (encontrado != null) {
+        coincidenciasSpan.innerHTML = encontrado.length;
+    }else{
+        coincidenciasSpan.innerHTML = 0;
+    }
+
     console.log(encontrado);
+
+    //seleccionar con colores las ocurrencias, sustituir el div original por el texto cambiado
+    let ocurrencias = textoABuscar.textContent.replaceAll(texto, `<span class='bg-primary text-light'>${texto}</span>`);
+    textoABuscar.innerHTML = ocurrencias;
+
 });
 
 //resumen de parrafo
@@ -103,15 +113,31 @@ resumen.innerHTML = resumenString;
 // Ej 3
 btnConvNom.addEventListener('click', function() {
     let resultado = (nombreInput.value.replaceAll(" ", "-")).toUpperCase();
-
-    //Convertir string a formato: s-s (sin espacios)
     nomConvResult.innerHTML = resultado;
 });
 
 btnConvFecha.addEventListener('click', function() {
-    //TODO: VALIDAR FECHA Y FORMATEARLA
-    const fecha = new Date(fechaInput.value.trim()).toLocaleDateString('en-US');
-    fechaConvResult.innerHTML = fecha.replaceAll("/", "-");
+    let fechaFormatted = '';
+
+    const fecha = (fechaInput.value.trim()).split('/');
+
+    let day = fecha[0];
+    let month = fecha[1];
+    let year = fecha[2].substring(0, 4);
+
+    if (day < 10) {
+        day = '0' + day;
+    }
+    if (month < 10) {
+        month = '0' + month;
+    }
+    if (year.length < 4) {
+        year += '0';
+    }
+
+    fechaFormatted = day + '-'+ month + '-' + year;
+    console.log(fechaFormatted);
+    fechaConvResult.innerHTML = fechaFormatted;
 
 });
 
@@ -135,16 +161,8 @@ btnEmoji.addEventListener('click', function() {
 
     let emojiRandom = emojisArray[generarRandom(0, emojisArray.length-1)];
     emojiDiv.innerHTML = emojiRandom;
-
 });
 
-/*
-
-metodos utiles:
-
-includes, match, split, indexOf....
-padEnd --> añadir el final con text hasta llegar al tamaño size
-*/
 
 
 
