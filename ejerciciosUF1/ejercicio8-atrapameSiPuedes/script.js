@@ -99,7 +99,6 @@ function start(){
     // txtDado1.innerHTML = '';
     // txtDado2.innerHTML = '';
     console.clear();
-    // preguntasQuiz.style.display = "none";
     preguntasQuiz.style.top = "-50rem";
     dado1.removeAttribute('disabled');
     dado2.removeAttribute('disabled');
@@ -138,13 +137,6 @@ function moverFicha(ficha, numPosiciones, posActual) {
     let i = posActual;
     let casillaFinal = numPosiciones + posActual;
 
-    // if (casillaFinal > 36) {
-    //     casillaFinal = 36;
-    //     console.log("te has pasado!");
-    // }else{
-
-    // }
-
     let casilla = '';
     if (ficha == ficha1) {
         posActualFicha1 += numPosiciones;
@@ -176,17 +168,7 @@ function moverFicha(ficha, numPosiciones, posActual) {
 
     function mover() {        
         if (casillaFinal > 36) {
-            // // casillaFinall = 36;
-            // let j = 36 - casillaFinal;
-            // if (j < casillaFinal) {
-            //     ficha.style.top = posiciones[i].y + 'px';
-            //     ficha.style.left = posiciones[i].x + 'px';
-                
-            //     i--;
-            //     setTimeout(mover, 275);
-            // }else{
-            //     comprobarCasilla(ficha, casilla+1);
-            // }
+            casillaFinal = 36;
         }else{
             if (i <= casillaFinal) {
                 ficha.style.top = posiciones[i].y + 'px';
@@ -202,11 +184,7 @@ function moverFicha(ficha, numPosiciones, posActual) {
     console.log('pos actual J1: ', posActualFicha1 + 1);
     console.log('pos actual J2: ', posActualFicha2 + 1);    
     
-    // console.log(casilla)
     mover();
-
-    //TODO: determinar si una ficha ha llegado 
-
 }
 
 // TODO: FUNCION QUE COMPRUEBA LA CASILLA EN LA QUE ESTA EL JUGADOR, Y HACE LAS ACCIONES CORRESPONDIENTES
@@ -244,7 +222,6 @@ function comprobarCasilla(ficha, casilla) {
             break;
         case 7: // avanza a posicion 11
             alert('avanzas a la estrella 11');
-            console.log('asdf')
             ficha.style.top = posiciones[10].y + 'px';
             ficha.style.left = posiciones[10].x + 'px';
             // cambiar el valor de posicion actual de la ficha desplazada
@@ -265,7 +242,6 @@ function comprobarCasilla(ficha, casilla) {
         case 18:
             alert('pierdes un turno');
             (ficha == ficha1) ? dado1.setAttribute('disabled', true) : dado2.setAttribute('disabled', true);
-            // (ficha == ficha1) ? dado1.setAttribute('disabled', true) : dado2.setAttribute('disabled', true);
 
             if (dado1.hasAttribute('disabled')) {
                 dado1.style.opacity = ".3";
@@ -307,7 +283,10 @@ function comprobarCasilla(ficha, casilla) {
         case 36:
             let ganador = '';
             (ficha == ficha1) ? ganador="1": ganador = "2";
-            alert("El jugador " + ganador + "ha ganado!");
+            alert("El jugador " + ganador + " ha ganado!");
+            setTimeout(() => {
+              start();
+            }, 300);
         default:
             // mostrar pregunta
             cargarPreguntaAleatoria(ficha, casilla);
@@ -510,7 +489,6 @@ function respuestaEscogida(ficha, posActual) {
 
             if (opcionEscogida[i].innerHTML == preguntaCargada.respuesta[numRespuestaCorrecta]) {
                 console.log(`La respuesta ${opcionEscogida[i].innerHTML} es correcta!`);
-                // opcionEscogida[i].classList.add('bg-success');
                 resultadoError.style.display = "none";
                 alert("Bien!");
             }else{
@@ -529,7 +507,6 @@ function respuestaEscogida(ficha, posActual) {
                 (ficha == ficha1) ? posActualFicha1--: posActualFicha2--;
             }
 
-            // preguntasQuiz.style.display = 'none';
             preguntasQuiz.style.top = "-50rem";
                 
         });
