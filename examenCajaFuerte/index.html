@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Caja Fuerte</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+        }
+        .container-fluid{
+            max-width: 95rem;
+        }
+        .mesa{
+            width: 165px;
+            height: 165px;
+            background-color: white;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            cursor: pointer;
+            transition: all .15s ease;
+        }
+        .mesa:hover{
+            transform: scale(1.05);
+        }
+        .mostrar{
+            display: none;
+        }
+        /* mesas info */
+        .pedido-info{
+            overflow-x: hidden; 
+            overflow-y: auto; 
+            font-size: 15px;
+            position: relative;
+            height: 60px;
+            text-align: center;
+            width: 160px;
+        }
+        .divMesas{
+            gap: .4rem;
+        }
+        tbody.tbodyModal tr{
+            display: table-row;
+            vertical-align: inherit;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 p-3" id="listaCervezas">
+                <h2>Listado de Cervezas</h2>
+                <table class="table table-striped w-100">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Graduación</th>
+                        <th scope="col">Foto</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- insertar dinamicamente desde js -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Seccion de pedidos, selects, y visualizacion de las mesas, al hacer click en una mes, abrir ventana modal -->
+            <div class="col p-3">
+                <button class="btn btn-secondary" id="btnToggleLista"><span id="estadoLista">Ocultar</span> Lista de Cervezas</button>
+            
+                <form class="mt-4">
+                    <div class="row">
+                        <div class="col">
+                            <select class="form-select w-100" aria-label="Default select example" id="selectCerveza">
+                                <!-- <option value="Estrella Damm">Estrella Damm</option> -->
+                                <!-- <option value="Mahou Cinco Estrellas">Mahou Cinco Estrellas</option>
+                                <option value="Alhambra Reserva 1925">Alhambra Reserva 1925</option>
+                                <option value="Heineken">Heineken</option>
+                                <option value="Ambar Especial">Ambar Especial</option> -->
+                                
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select class="form-select w-100" aria-label="Default select example" id="selectCantidad">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select class="form-select w-100" aria-label="Default select example" id="selectMesa">
+                                <option value="Mesa 1">Mesa 1</option>
+                                <option value="Mesa 2">Mesa 2</option>
+                                <option value="Mesa 3">Mesa 3</option>
+                                <option value="Mesa 4">Mesa 4</option>
+                                <option value="Mesa 5">Mesa 5</option>
+                            </select>
+                        </div>
+                        <div class="col w-100">
+                            <button class="btn btn-primary w-100" type="submit" id="hacerPedido">Hacer Pedido</button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Mesas -->
+                <div class="row p-4 d-flex justify-content-around flex-wrap mt-3 divMesas">
+                    <div class="mesa rounded-circle d-flex justify-content-center align-items-center flex-column" id="divMesa1" data-bs-toggle="modal" data-bs-target="#modal1">
+                        <h4 class="text-primary">Mesa 1</h4>
+                        <div class="pedido-info mes-1">
+                            
+                        </div>
+                    </div>
+                    <div class="mesa rounded-circle d-flex justify-content-center align-items-center flex-column" id="divMesa2" data-bs-toggle="modal" data-bs-target="#modal1">
+                        <h4 class="text-primary">Mesa 2</h4>
+                        <div class="pedido-info mes-2">
+                            
+                        </div>
+                    </div>
+                    <div class="mesa rounded-circle d-flex justify-content-center align-items-center flex-column" id="divMesa3" data-bs-toggle="modal" data-bs-target="#modal1">
+                        <h4 class="text-primary">Mesa 3</h4>
+                        <div class="pedido-info mes-3">
+                            
+                        </div>
+                    </div>
+                    <div class="mesa rounded-circle d-flex justify-content-center align-items-center flex-column" id="divMesa4" data-bs-toggle="modal" data-bs-target="#modal1">
+                        <h4 class="text-primary">Mesa 4</h4>
+                        <div class="pedido-info mes-4">
+                            
+                        </div>
+                    </div>
+                    <div class="mesa rounded-circle d-flex justify-content-center align-items-center flex-column" id="divMesa5" data-bs-toggle="modal" data-bs-target="#modal1">
+                        <h4 class="text-primary">Mesa 5</h4>
+                        <div class="pedido-info mes-5">
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Pedidos de la Mesa</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <table class="table table-bordered">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">Cerveza</th>
+                                        <th scope="col">Cantidad</th>
+                                        <th scope="col">Precio Unitario</th>
+                                        <th scope="col">Total</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody id="tbodyModal01" style="display: none;" class="tbodyModal">
+                                    
+                                    </tbody>
+                                    <tbody id="tbodyModal02" style="display: none;" class="tbodyModal">
+
+                                    </tbody>
+                                    <tbody id="tbodyModal03" style="display: none;" class="tbodyModal">
+
+                                    </tbody>
+                                    <tbody id="tbodyModal04" style="display: none;" class="tbodyModal">
+
+                                    </tbody>
+                                    <tbody id="tbodyModal05" style="display: none;" class="tbodyModal">
+
+                                    </tbody>
+                                    <tfoot> 
+                                        <tr>
+                                            <th colspan="3">Total Acumulado</th>
+                                            <th id="totalAcumulado" ></th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- <script src="js/script.js"></script> -->
+    <script>
+        console.log('inicialitzat.')
+
+        // Variables
+        // lista
+        const btnToggleLista = document.querySelector('button#btnToggleLista');
+        const listaCervezas = document.querySelector('div#listaCervezas');
+        const filasLista = document.querySelector('tbody#tableBody')
+        const btnToggleListaSpan = document.querySelector('span#estadoLista');
+
+        //pedido
+        const btnPedido = document.querySelector('button#hacerPedido');
+
+        //mesas
+        const mesa1 = document.querySelector('div.mes-1');
+        const mesa2 = document.querySelector('div.mes-2');
+        const mesa3 = document.querySelector('div.mes-3');
+        const mesa4 = document.querySelector('div.mes-4');
+        const mesa5 = document.querySelector('div.mes-5');
+
+
+        const mesasDiv = document.querySelectorAll('div.mesa')
+
+        const selectCervezas =  document.querySelector('select#selectCerveza');
+        const cervezasInfo = [
+            {
+                nombre: 'Estrella Damm',
+                precioxUnidad: 3.0,
+                graduacion: 5.4,
+                foto: 'https://cashosona.com/wp-content/uploads/2020/06/Estrella-Damm-Llauna-33cl.jpg',
+            },
+            {
+                nombre: 'Mahou Cinco Estrellas',
+                precioxUnidad: 3.2,
+                graduacion: 5.5,
+                foto: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxM-BgFQAo3JrdDO2pjPvJUdC9Jx0U1RcyHQ&s',
+            },
+            {
+                nombre: 'Alhambra Reserva 1925',
+                precioxUnidad: 3.5,
+                graduacion: 6.4,
+                foto: 'https://www.mahou-sanmiguel.com/dw/image/v2/BBTJ_PRD/on/demandware.static/-/Sites-lasolana-master-catalog/default/dwa0b598fc/images/hi-res/24208-2.jpg?sw=420&ampsh=420&ampsm=fit&ampq=70',
+            },
+            {
+                nombre: 'Heineken',
+                precioxUnidad: 3.0,
+                graduacion: 5.0,
+                foto: 'https://deor.es/7792-home_default/heineken-13-24uds.jpg',
+            },
+            {
+                nombre: 'Ambar Especial',
+                precioxUnidad: 2.8,
+                graduacion: 5.2,
+                foto: 'https://ambar.com/tienda/wp-content/uploads/2023/03/Botella-33-Ambar-Especial.png',
+            }
+        ];
+
+        //modal
+        const modal = document.querySelector('div.modal');
+        const tableModal = document.querySelector('tbody#tbodyModal');
+
+        const tableModal01 = document.querySelector('tbody#tbodyModal01');
+        const tableModal02 = document.querySelector('tbody#tbodyModal02');
+        const tableModal03 = document.querySelector('tbody#tbodyModal03');
+        const tableModal04 = document.querySelector('tbody#tbodyModal04');
+        const tableModal05 = document.querySelector('tbody#tbodyModal05');
+
+        const totalAcumulado = document.querySelector('th#totalAcumulado');
+
+
+        //llenar lista cervezas dinamicamente
+        window.onload = () =>{
+            for (let i in cervezasInfo) {
+                let cerveza =  cervezasInfo[i];
+        
+                filasLista.innerHTML += `
+                <tr>
+                    <td>${cerveza.nombre}</td>
+                    <td>${cerveza.precioxUnidad}€</td>
+                    <td>${cerveza.graduacion}%</td>
+                    <td>
+                        <img src="${cerveza.foto}" alt="cerveza" width="100px" height="100px" style="object-fit: contain;">
+                    </td>
+                </tr>
+                `;
+                
+                selectCervezas.innerHTML += `
+                    <option value="${cerveza.nombre}">${cerveza.nombre}</option>
+                `;
+            }
+        };
+
+        // Lista Cervezas Btn toggle
+        btnToggleLista.addEventListener('click', function() {
+            listaCervezas.classList.toggle('mostrar')
+            if (btnToggleListaSpan.innerHTML == 'Mostrar') {
+                btnToggleListaSpan.innerHTML = 'Ocultar';
+                // se cambia el background del boton
+                btnToggleLista.classList.remove('btn-primary');
+                btnToggleLista.classList.add('btn-secondary');
+            }else{
+                btnToggleListaSpan.innerHTML = 'Mostrar';
+                btnToggleLista.classList.remove('btn-secondary');
+                btnToggleLista.classList.add('btn-primary');
+            }
+        });
+
+
+        let totalCervezasPrecio1 = 0;
+        let totalCervezasPrecio2 = 0;
+        let totalCervezasPrecio3 = 0;
+        let totalCervezasPrecio4 = 0;
+        let totalCervezasPrecio5 = 0;
+
+        //pedido
+        btnPedido.addEventListener('click', function(event) {
+
+            event.preventDefault();
+
+            let nombreCerveza = document.querySelector('select#selectCerveza').value;
+            let cantidad = document.querySelector('select#selectCantidad').value;
+            let numMesa = document.querySelector('select#selectMesa').value;
+            
+            const arrIndex = cervezasInfo.findIndex(x => x.nombre == nombreCerveza);
+            console.log(arrIndex);
+
+            let precio = `${cervezasInfo[arrIndex].precioxUnidad}`;
+
+            // introducir en los divs de las mesas la informacion del pedido 
+            listarCervezasPorMesa(numMesa, nombreCerveza, cantidad, precio);
+
+        });
+
+        //funcion mostrar detalles en la ventana modal, cambiando el display de los tbody
+        mesasDiv.forEach((mesa) =>{
+            let id = mesa.id;
+            mesa.addEventListener('click', function() {
+                switch (id) {
+                    case "divMesa1":
+                        tableModal01.style.display = "table-row-group";
+                        tableModal02.style.display = "none";
+                        tableModal03.style.display = "none";
+                        tableModal04.style.display = "none";
+                        tableModal05.style.display = "none";
+                        totalAcumulado.innerHTML = totalCervezasPrecio1 + "€"; 
+                        
+                        break;
+                
+                    case "divMesa2":
+                        tableModal01.style.display = "none";
+                        tableModal02.style.display = "table-row-group";
+                        tableModal03.style.display = "none";
+                        tableModal04.style.display = "none";
+                        tableModal05.style.display = "none";
+                        totalAcumulado.innerHTML = totalCervezasPrecio2 + "€";
+                        break;
+                
+                    case "divMesa3":
+                        tableModal01.style.display = "none";
+                        tableModal02.style.display = "none";
+                        tableModal03.style.display = "table-row-group";
+                        tableModal04.style.display = "none";
+                        tableModal05.style.display = "none";
+                        totalAcumulado.innerHTML = totalCervezasPrecio3 + "€";
+                        break;
+                
+                    case "divMesa4":
+                        tableModal01.style.display = "none";
+                        tableModal02.style.display = "none";
+                        tableModal03.style.display = "none";
+                        tableModal04.style.display = "table-row-group";
+                        tableModal05.style.display = "none";
+                        totalAcumulado.innerHTML = totalCervezasPrecio4 + "€";
+                        break;
+                
+                    case "divMesa5":
+                        tableModal01.style.display = "none";
+                        tableModal02.style.display = "none";
+                        tableModal03.style.display = "none";
+                        tableModal04.style.display = "none";
+                        tableModal05.style.display = "table-row-group";
+                        totalAcumulado.innerHTML = totalCervezasPrecio5 + "€";
+                        break;
+                }         
+            });
+        });
+
+        //FUNCION QUE introduce los detalles de la cerveza en la ventana modal e inyectar la cantidad de cerveza en el div
+        function listarCervezasPorMesa(numMesa, nombreCerveza, cantidad, precioU){
+            switch (numMesa) {
+                case 'Mesa 1':
+                    totalCervezasPrecio1 += cantidad * precioU;
+                    mesa1.innerHTML += `
+                        <p>${nombreCerveza} x${cantidad}</p>
+                    `;
+
+                    tableModal01.innerHTML += `
+                        <tr">
+                            <td>${nombreCerveza}</td>
+                            <td>${cantidad}</td>
+                            <td>${precioU}€</td>
+                            <td>${(precioU*cantidad).toFixed(2)}€</td>
+                        </tr>
+                    `;
+
+                    break;
+                case 'Mesa 2':
+                    totalCervezasPrecio2 += cantidad * precioU;
+                    mesa2.innerHTML += `
+                        <p>${nombreCerveza} x${cantidad}</p>
+                    `;
+
+                    tableModal02.innerHTML += `
+                        <tr>
+                            <td>${nombreCerveza}</td>
+                            <td>${cantidad}</td>
+                            <td>${precioU}</td>
+                            <td>${(precioU*cantidad).toFixed(2)}€</td>
+                        </tr>
+                    `;
+
+                    break;
+            
+                case 'Mesa 3':
+                    totalCervezasPrecio3 += cantidad * precioU;
+                    mesa3.innerHTML += `
+                        <p>${nombreCerveza} x${cantidad}</p>
+                    `;
+
+                    tableModal03.innerHTML += `
+                        <tr>
+                            <td>${nombreCerveza}</td>
+                            <td>${cantidad}</td>
+                            <td>${precioU}</td>
+                            <td>${(precioU*cantidad).toFixed(2)}€</td>
+                        </tr>
+                    `;
+ 
+                    break;
+            
+                case 'Mesa 4':
+                    totalCervezasPrecio4 += cantidad * precioU;
+                    mesa4.innerHTML += `
+                        <p>${nombreCerveza} x${cantidad}</p>
+                    `;
+                    
+                    tableModal04.innerHTML += `
+                        <tr>
+                            <td>${nombreCerveza}</td>
+                            <td>${cantidad}</td>
+                            <td>${precioU}</td>
+                            <td>${(precioU*cantidad).toFixed(2)}€</td>
+                        </tr>
+                    `;
+
+                    break;
+            
+                case 'Mesa 5':
+                    totalCervezasPrecio5 += cantidad * precioU;
+                    mesa5.innerHTML += `
+                        <p>${nombreCerveza} x${cantidad}</p>
+                    `;      
+
+                    tableModal05.innerHTML += `
+                        <tr>
+                            <td>${nombreCerveza}</td>
+                            <td>${cantidad}</td>
+                            <td>${precioU}</td>
+                            <td>${(precioU*cantidad).toFixed(2)}€</td>
+                        </tr>
+                    `;
+
+                break;
+            }
+
+        }
+    </script>
+</body>
+</html>
